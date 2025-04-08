@@ -46,3 +46,70 @@ python redactor.py \
 ```
 
 ### Flags
+
+--input : Path to input file(s)
+
+--output : Path to output directory
+
+--stats	: File to log redaction statistics
+
+--names	: Redact person names
+
+--dates : Redact all types of dates
+
+--phones : Redact phone numbers
+
+--genders : Redact gendered terms
+
+--address : Redact street address and ZIP code
+
+### Running Tests:
+
+To run the provided unit tests:
+
+```bash
+pytest test_redact.py
+```
+
+Tests include:
+
+* Name redaction
+* Gender term masking
+* Date pattern replacement
+* Phone/address sanitization
+* Directory-based file redaction
+
+## Sample Redaction Example:
+
+Input:
+
+`John Doe (male) called 555-1234 on 01/01/2022 from 123 Main St, Houston, TX 77001.`
+
+Output:
+
+`████████ (████) called ███████████████ on ███████████████ from █████████████████████████`
+
+## 📊 Redaction Stats
+
+A stats report will be generated (e.g., stats.txt) showing what categories were redacted and how many occurrences were found.
+
+```bash
+samples/text1.txt
+3 names's are Redacted
+2 gender's are Redacted
+4 dates's are Redacted
+1 phone's are Redacted
+```
+
+## 📌 Notes:
+
+* The tool keeps email addresses intact even if they contain names.
+* Message IDs (like Message-ID: <...>) are preserved to avoid breaking email headers.
+* For performance, batch operations are supported using glob patterns like *.txt.
+
+
+
+
+
+
+
